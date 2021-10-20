@@ -112,7 +112,7 @@ func (c *Command) execute(flags []string) error {
 	}
 
 	if c.Run == nil {
-		return errors.New("command is not runnable")
+		return c.execute([]string{"-h"})
 	}
 	return c.Run(c, args)
 }
