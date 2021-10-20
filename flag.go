@@ -13,7 +13,7 @@ func (c *Command) FlagBoolVar(p *bool, name string, value bool, usage string) {
 	c.flags().BoolVar(p, name, value, usage)
 }
 
-// // FlagIntVar calls flag.IntVar
+// FlagIntVar calls flag.IntVar
 func (c *Command) FlagIntVar(p *int, name string, value int, usage string) {
 	c.goFlagNum += 1
 	c.flags().IntVar(p, name, value, usage)

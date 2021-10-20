@@ -14,6 +14,7 @@ func init() {
 	rootCmd.AddCmd(helloCmd)
 }
 
+// Execute executes root command
 func Execute() error {
 	return rootCmd.Execute()
 }

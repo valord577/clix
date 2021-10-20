@@ -12,7 +12,7 @@ import (
 
 // @author valor.
 
-// Command: a command for your application.
+// Command is a command for your application.
 type Command struct {
 	// Name: the command's name
 	Name string
