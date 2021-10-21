@@ -80,6 +80,10 @@ func (c *Command) flags() *flag.FlagSet {
 // Execute uses the args (os.Args[1:])
 // and executes the command.
 func (c *Command) Execute() error {
+	if c == nil {
+		return errors.New("command is nil")
+	}
+
 	// The command runs on root only
 	if c.hasParent() {
 		return c.root().Execute()
@@ -87,6 +91,10 @@ func (c *Command) Execute() error {
 
 	args := os.Args[1:]
 	cmd, flags, err := findCmd(c, args)
+	if err == flag.ErrHelp {
+		// print help message
+		return cmd.printHelp()
+	}
 	if err != nil {
 		return err
 	}
@@ -112,7 +120,7 @@ func (c *Command) execute(flags []string) error {
 	}
 
 	if c.Run == nil {
-		return c.execute([]string{"-h"})
+		return flag.ErrHelp
 	}
 	return c.Run(c, args)
 }
@@ -270,10 +278,6 @@ func isFlagArg(arg string) bool {
 }
 
 func findCmd(c *Command, args []string) (*Command, []string, error) {
-	if c == nil {
-		return nil, nil, errors.New("command is nil")
-	}
-
 	length := len(args)
 	if length == 0 {
 		return c, args, nil
@@ -286,7 +290,7 @@ func findCmd(c *Command, args []string) (*Command, []string, error) {
 
 	cmd := c.chlid(s)
 	if cmd == nil {
-		return nil, nil, errors.New("command not found")
+		return c, nil, flag.ErrHelp
 	}
 	return findCmd(cmd, args[1:])
 }
