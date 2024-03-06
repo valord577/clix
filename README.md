@@ -1,16 +1,14 @@
 Clix
 ======
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/valord577/clix?t=0)](https://goreportcard.com/report/github.com/valord577/clix)
+[![Go Report](https://goreportcard.com/badge/github.com/valord577/clix)](https://goreportcard.com/report/github.com/valord577/clix)
 [![Go Reference](https://pkg.go.dev/badge/github.com/valord577/clix.svg)](https://pkg.go.dev/github.com/valord577/clix)
-[![GitHub License](https://img.shields.io/github/license/valord577/clix?t=0)](LICENSE)
+[![License](https://img.shields.io/github/license/valord577/clix)](LICENSE)
+[![Go compat](https://img.shields.io/github/go-mod/go-version/valord577/clix?label=compatibility)](#)
+[![Go module](https://badge.fury.io/go/github.com%2Fvalord577%2Fclix.svg)](https://badge.fury.io/go/github.com%2Fvalord577%2Fclix)
+
 
 Clix is a library that makes it easier to build go cli applications with lightweight code and only depend on the stdlib.
-
-Compatibility
-------
-
-- Compatible with go 1.16+
 
 Features
 ------
