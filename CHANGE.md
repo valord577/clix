@@ -2,6 +2,12 @@
 
 All notable changes to **clix** are documented in this file.
 
+## v0.4.20240306
+
+#### Changed
+
+- Nothing output when parse flags.
+
 ## v0.3.20211021
 
 #### Changed

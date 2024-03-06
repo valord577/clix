@@ -71,7 +71,7 @@ func (c *Command) flags() *flag.FlagSet {
 			},
 		}
 
-		c.goFlagSet.SetOutput(c.out())
+		c.goFlagSet.SetOutput(io.Discard)
 	}
 
 	return c.goFlagSet
@@ -80,10 +80,6 @@ func (c *Command) flags() *flag.FlagSet {
 // Execute uses the args (os.Args[1:])
 // and executes the command.
 func (c *Command) Execute() error {
-	if c == nil {
-		return errors.New("command is nil")
-	}
-
 	// The command runs on root only
 	if c.hasParent() {
 		return c.root().Execute()
