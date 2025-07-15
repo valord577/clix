@@ -2,6 +2,12 @@
 
 All notable changes to **clix** are documented in this file.
 
+## v0.5.20250715
+
+#### Changed
+
+- Remove api `AddCmd` errcheck.
+
 ## v0.4.20240306
 
 #### Changed
