@@ -2,7 +2,6 @@ package clix
 
 import (
 	"bytes"
-	"errors"
 	"flag"
 	"io"
 	"os"
@@ -39,10 +38,10 @@ type Command struct {
 }
 
 // AddCmd adds one or more commands to this command.
-func (c *Command) AddCmd(cmds ...*Command) error {
+func (c *Command) AddCmd(cmds ...*Command) {
 	length := len(cmds)
 	if length == 0 {
-		return nil
+		return
 	}
 	if c.commands == nil {
 		c.commands = make(map[string]*Command)
@@ -50,16 +49,15 @@ func (c *Command) AddCmd(cmds ...*Command) error {
 
 	for i := 0; i < length; i++ {
 		if cmds[i] == c {
-			return errors.New("can't use itself as a subcommand")
+			continue
 		}
 		if cmds[i] == nil {
-			return errors.New("can't use nil as a subcommand")
+			continue
 		}
 
 		cmds[i].parent = c
 		c.commands[cmds[i].Name] = cmds[i]
 	}
-	return nil
 }
 
 // Flags returns goFlagSet.
